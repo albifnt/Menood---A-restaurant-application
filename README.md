@@ -1,4 +1,7 @@
 # Menood---A-restaurant-application
+<p align="center">
+  <img  style="text-align:center" src="https://github.com/albifnt/Menood---A-restaurant-application/blob/main/content_readme/Logo.png" width="400" height="400">
+</p>
 
 ## Problems and difficulties faced.
 <p align="justify">

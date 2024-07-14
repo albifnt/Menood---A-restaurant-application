@@ -1,0 +1,76 @@
+<FoodTastes>:
+    GridLayout:
+        cols: 1
+        pos_hint: {"top": 1, "left": 1}
+        size_hint: 1, .1
+        MDLabel:
+            id: food_name
+            markup: True
+            halign: "center"
+
+    GridLayout:
+        cols: 1
+        pos_hint: {"top": 0.9, "left": 1}
+        size_hint: 1, .60
+        Image:
+            id: food_image
+
+    GridLayout:
+        rows: 1
+        pos_hint: {"top": 0.3, "left": 1}
+        size_hint: 1, .15
+        MDSlider:
+            id: progress_slider
+            min: 0
+            max: 100
+            value: 0
+            hint: True
+            spacing: "10dp"
+            padding: "50dp"
+            canvas.before:
+                Color:
+                    rgba: (.2, .2, .2, 1)
+
+
+    GridLayout:
+        rows: 1
+        pos_hint: {"top": 0.15, "left": 1}
+        size_hint: 1, .15
+        FloatLayout:
+            MDFloatingActionButton:
+                pos_hint: {"center_x":0.125, "center_y":0.5}
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                md_bg_color: [1, 1, 1, 1]
+                on_release:
+                    app.go_back_2()
+
+
+            MDFloatingActionButton:
+                pos_hint: {"center_x":0.375, "center_y":0.5}
+                icon: "thumb-down"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                md_bg_color: [1, 1, 1, 1]
+                on_release:
+                    app.all_into_2()
+
+            MDFloatingActionButton:
+                pos_hint: {"center_x":0.625, "center_y":0.5}
+                icon: "thumb-up"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                md_bg_color: [1, 1, 1, 1]
+                on_release:
+                    app.evaluation_2()
+
+            MDFloatingActionButton:
+                pos_hint: {"center_x":0.875, "center_y":0.5}
+                icon: "emoticon-confused"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                md_bg_color: [1, 1, 1, 1]
+                on_release:
+                    app.skipping_2()
+

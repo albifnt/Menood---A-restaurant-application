@@ -1,0 +1,74 @@
+<SuggestionPage>:
+    FloatLayout:
+        GridLayout:
+            canvas:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .1
+            FloatLayout:
+                MDIconButton:
+                    pos_hint: {"center_y": 0.5, "left": 1}
+                    icon: "keyboard-backspace"
+                    on_release:
+                        app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'right'
+                        app.change_screen("screen_manager_2", "account_page")
+            FloatLayout:
+                MDLabel:
+                    id: suggestion
+                    pos_hint: {"top": 1, "right": 0.7}
+                    bold: True
+                    italic: True
+        MDSeparator:
+            pos_hint: {"top": 0.9, "left": 1}
+            size_hint: 1, .001
+        ScrollView:
+            pos_hint: {"top": 0.899, "right": 1}
+            size_hint: 1, .899
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                row_force_true: True
+
+                MDSeparator:
+                    size_hint: 1, None
+                    height: dp(1)
+
+                GridLayout:
+                    rows: 1
+                    size_hint: 1, None
+                    height: dp(70)
+                    Button:
+                        id: active
+                        background_color: 0,0,0,0
+                        color: 0,0,0,1
+                        font_size: 30
+                        bold: True
+                        on_release:
+                            app.option_callback_2("active")
+
+                MDSeparator:
+                    size_hint: 1, None
+                    height: dp(1)
+
+                GridLayout:
+                    rows: 1
+                    size_hint: 1, None
+                    height: dp(70)
+                    Button:
+                        id: inactive
+                        background_color: 0,0,0,0
+                        color: 0,0,0,1
+                        font_size: 30
+                        bold: True
+                        on_release:
+                            app.option_callback_2("inactive")
+
+                MDSeparator:
+                    size_hint: 1, None
+                    height: dp(1)

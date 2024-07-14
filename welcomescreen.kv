@@ -1,0 +1,28 @@
+<WelcomeScreen>:
+    FloatLayout:
+        Image:
+            source: "appimages/Logo.png"
+            size_hint: .4, .4
+            pos_hint: {"center_x": .5, "center_y": .7}
+
+        ThemedButton:
+            id: log_in_button
+            size_hint: .9, .07
+            pos_hint: {"top": .32, "center_x": .5}
+            text: "[u]Sign In[/u]"
+            bg_color: root.parent.parent.primary_color if root.parent else (0,0,0,1)
+            color: root.parent.parent.secondary_color if root.parent else (0,0,0,1)
+            on_release:
+                root.parent.current = "sign_in_screen"
+
+        ThemedButton:
+            id: create_account_button
+            size_hint: .9, .07
+            pos_hint: {"top": .225, "center_x": .5}
+            text: "[u]Create Account[/u]"
+            bg_color: root.parent.parent.primary_color if root.parent else (0,0,0,1)
+            color: root.parent.parent.secondary_color if root.parent else (0,0,0,1)
+            on_release:
+                root.parent.current = "create_account_screen"
+
+

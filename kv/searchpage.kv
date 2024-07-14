@@ -1,0 +1,88 @@
+<SearchPage>:
+    FloatLayout:
+        GridLayout:
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .1
+            MDIconButton:
+                icon: 'silverware-fork-knife'
+                theme_text_color: 'Custom'
+                text_color: [0, 0.635, 0.910, 1]
+                size_hint: .2, 1
+            MDLabel:
+                size_hint: .05, 1
+            GridLayout:
+                cols: 1
+                size_hint: 0.6, 1
+                MDLabel:
+                    size_hint: 1, 0.1
+                MDTextFieldRound:
+                    id: name_place
+                    size_hint: 1, 0.8
+                    foreground_color: 0, 0.635, 0.910, 1
+                    cursor_color: 0, 0.635, 0.910, 1
+                MDLabel:
+                    size_hint: 1, 0.1
+
+            MDLabel:
+                size_hint: .15, 1
+
+        MDSeparator:
+            pos_hint: {"top": 0.9, "left": 1}
+            size_hint: 1, .001
+
+        GridLayout:
+            rows: 1
+            pos_hint: {"top": 0.899, "left": 1}
+            size_hint: 1, .1
+            MDIconButton:
+                icon: 'map-marker'
+                theme_text_color: 'Custom'
+                text_color: [0, 0.635, 0.910, 1]
+                size_hint: .2, 1
+            MDLabel:
+                size_hint: .05, 1
+            GridLayout:
+                cols: 1
+                size_hint: 0.6, 1
+                MDLabel:
+                    size_hint: 1, 0.1
+                MDTextFieldRound:
+                    id: city_place
+                    size_hint: 1, 0.8
+                    foreground_color: 0, 0.635, 0.910, 1
+                    cursor_color: 0, 0.635, 0.910, 1
+                MDLabel:
+                    size_hint: 1, 0.1
+
+            MDLabel:
+                size_hint: .15, 1
+
+        MDSeparator:
+            pos_hint: {"top": 0.799, "left": 1}
+            size_hint: 1, .001
+
+        ScrollView:
+            pos_hint: {"top": 0.798, "left": 1}
+            size_hint: 1, .798
+            GridLayout:
+                # Search place banner
+                id: search_place_banner
+                cols: 1
+                spacing: 10, 10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '70dp'
+                row_default_force: True
+
+        MDFloatingActionButton:
+            pos_hint: {"top": 0.2, "right": 0.9}
+            icon: "search-web"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            md_bg_color: [1, 1, 1, 1]
+            on_release:
+                app.search_place(name_place.text, city_place.text)
+
+
+

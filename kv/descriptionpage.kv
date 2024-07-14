@@ -1,0 +1,1310 @@
+#:include kv/smallmapview.kv
+
+<DescriptionPage>:
+    ScrollView:
+        GridLayout:
+            id: list_layout
+            cols: 1
+            spacing: dp(20)
+            padding: dp(20)
+            size_hint_y: None
+            height: self.minimum_height
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: [1,0,0,.5]
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: self.minimum_height
+                MDIconButton:
+                    icon: "keyboard-backspace"
+                    pos_hint: {"center_y": 0.5, "left": 1}
+                    on_release:
+                        app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'right'
+                        app.change_screen("screen_manager_2", "favorite_page")
+                MDLabel:
+                    id: name
+                    text: root.name_place
+                    font_style: 'H6'
+                    italic: True
+                    size_hint_y: None
+                    halign: 'center'
+                    valign: 'center'
+                    text_size: self.width, None
+                    height: dp(8) + self.texture_size[1] + dp(8)
+
+            MDSeparator:
+                id: sep_1
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: dp(220)
+                SmallMapView:
+                    id: small_map_view
+                    lat: root.lat
+                    lon: root.lon
+                    SmallMapMarker:
+                        lat: root.lat
+                        lon: root.lon
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: "Indice Menood"
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'map-marker'
+
+            MDLabel:
+                id: indice_menood
+                text: "8.8/10"
+                font_size: 26
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.address_title
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'map-marker'
+                    on_release:
+                        webbrowser.open("http://maps.apple.com/?address="+parse.quote(address_google_maps.text))
+            MDLabel:
+                id: address_google_maps
+                text: root.address
+                font_size: 26
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.description_title
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'web'
+                    on_release:
+                        webbrowser.open(root.website)
+            MDLabel:
+                text: root.description
+                font_size: 26
+                size_hint_y: None
+                height: self.texture_size[1]
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.time_table
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'clock'
+            GridLayout:
+                cols: 2
+                spacing: '4dp'
+                size_hint_y: None
+                height: monday_height.height + tuesday_height.height + wednesday_height.height + thursday_height.height + friday_height.height + saturday_height.height + sunday_height.height + dp(24)
+                MDLabel:
+                    text: root.monday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: monday_height.texture_size[1]
+                MDLabel:
+                    id: monday_height
+                    text: root.monday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: root.tuesday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: tuesday_height.texture_size[1]
+                MDLabel:
+                    id: tuesday_height
+                    text: root.tuesday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: root.wednesday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: wednesday_height.texture_size[1]
+                MDLabel:
+                    id: wednesday_height
+                    text: root.wednesday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: root.thursday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: thursday_height.texture_size[1]
+                MDLabel:
+                    id: thursday_height
+                    text: root.thursday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: root.friday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: friday_height.texture_size[1]
+                MDLabel:
+                    id: friday_height
+                    text: root.friday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: root.saturday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: saturday_height.texture_size[1]
+                MDLabel:
+                    id: saturday_height
+                    text: root.saturday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: root.sunday_title
+                    text_size: self.width, self.height
+                    valign: 'top'
+                    font_size: 26
+                    size_hint_y: None
+                    height: sunday_height.texture_size[1]
+                MDLabel:
+                    id: sunday_height
+                    text: root.sunday
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.telephone_title
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'phone'
+                    on_release:
+                        app.phone_call(root.telephone)
+            MDLabel:
+                text: root.telephone
+                font_size: 26
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.parking_title
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'car'
+            MDLabel:
+                text: root.parking
+                font_size: 26
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: "Altro"
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: 'information'
+
+            MDLabel:
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.favorite_places_title
+                    bold: True
+                    italic: True
+                    font_size: 30
+                MDIconButton:
+                    icon: root.favorite_icon
+                    on_release:
+                        app.fav_sfav(root.uid, root.name_place, root.short_address)
+
+            MDLabel:
+
+            MDSeparator:
+                id: sep_2
+
+            MDLabel:
+                text: 'Menu'
+                font_style: 'H6'
+                italic: True
+                halign: 'center'
+                valign: 'top'
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
+
+            MDSeparator:
+                id: sep_3
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: intolleranti.height
+                MDLabel:
+                    id: intolleranti
+                    text: "Il cliente puo' richiedere prodotti senza glutine"
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            MDLabel:
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.first_plates_name
+                    bold: True
+                    italic: True
+                    font_size: 30
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_1.height + first_plate_1_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_1.height
+                    MDLabel:
+                        id: first_plate_1
+                        text: root.first_plate_1
+                        color: root.color_first_plate_1
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_1_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_1_ingredients
+                    text: root.first_plate_1_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_2.height + first_plate_2_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_2.height
+                    MDLabel:
+                        id: first_plate_2
+                        text: root.first_plate_2
+                        color: root.color_first_plate_2
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_2_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_2_ingredients
+                    text: root.first_plate_2_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_3.height + first_plate_3_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_3.height
+                    MDLabel:
+                        id: first_plate_3
+                        text: root.first_plate_3
+                        color: root.color_first_plate_3
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_3_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_3_ingredients
+                    text: root.first_plate_3_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_4.height + first_plate_4_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_4.height
+                    MDLabel:
+                        id: first_plate_4
+                        text: root.first_plate_4
+                        color: root.color_first_plate_4
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_4_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_4_ingredients
+                    text: root.first_plate_4_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_5.height + first_plate_5_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_5.height
+                    MDLabel:
+                        id: first_plate_5
+                        text: root.first_plate_5
+                        color: root.color_first_plate_5
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_5_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_5_ingredients
+                    text: root.first_plate_5_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_6.height + first_plate_6_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_6.height
+                    MDLabel:
+                        id: first_plate_6
+                        text: root.first_plate_6
+                        color: root.color_first_plate_6
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_6_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_6_ingredients
+                    text: root.first_plate_6_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_7.height + first_plate_7_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_7.height
+                    MDLabel:
+                        id: first_plate_7
+                        text: root.first_plate_7
+                        color: root.color_first_plate_7
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_7_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_7_ingredients
+                    text: root.first_plate_7_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_8.height + first_plate_8_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_8.height
+                    MDLabel:
+                        id: first_plate_8
+                        text: root.first_plate_8
+                        color: root.color_first_plate_8
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_8_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_8_ingredients
+                    text: root.first_plate_8_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_9.height + first_plate_9_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_9.height
+                    MDLabel:
+                        id: first_plate_9
+                        text: root.first_plate_9
+                        color: root.color_first_plate_9
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_9_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_9_ingredients
+                    text: root.first_plate_9_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: first_plate_10.height + first_plate_10_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: first_plate_10.height
+                    MDLabel:
+                        id: first_plate_10
+                        text: root.first_plate_10
+                        color: root.color_first_plate_10
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.first_plate_10_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: first_plate_10_ingredients
+                    text: root.first_plate_10_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            MDLabel:
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.second_plates_name
+                    bold: True
+                    italic: True
+                    font_size: 30
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_1.height + second_plate_1_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_1.height
+                    MDLabel:
+                        id: second_plate_1
+                        text: root.second_plate_1
+                        color: root.color_second_plate_1
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_1_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_1_ingredients
+                    text: root.second_plate_1_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_2.height + second_plate_2_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_2.height
+                    MDLabel:
+                        id: second_plate_2
+                        text: root.second_plate_2
+                        color: root.color_second_plate_2
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_2_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_2_ingredients
+                    text: root.second_plate_2_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_3.height + second_plate_3_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_3.height
+                    MDLabel:
+                        id: second_plate_3
+                        text: root.second_plate_3
+                        color: root.color_second_plate_3
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_3_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_3_ingredients
+                    text: root.second_plate_3_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_4.height + second_plate_4_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_4.height
+                    MDLabel:
+                        id: second_plate_4
+                        text: root.second_plate_4
+                        color: root.color_second_plate_4
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_4_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_4_ingredients
+                    text: root.second_plate_4_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_5.height + second_plate_5_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_5.height
+                    MDLabel:
+                        id: second_plate_5
+                        text: root.second_plate_5
+                        color: root.color_second_plate_5
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_5_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_5_ingredients
+                    text: root.second_plate_5_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_6.height + second_plate_6_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_6.height
+                    MDLabel:
+                        id: second_plate_6
+                        text: root.second_plate_6
+                        color: root.color_second_plate_6
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_6_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_6_ingredients
+                    text: root.second_plate_6_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_7.height + second_plate_7_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_7.height
+                    MDLabel:
+                        id: second_plate_7
+                        text: root.second_plate_7
+                        color: root.color_second_plate_7
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_7_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_7_ingredients
+                    text: root.second_plate_7_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_8.height + second_plate_8_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_8.height
+                    MDLabel:
+                        id: second_plate_8
+                        text: root.second_plate_8
+                        color: root.color_second_plate_8
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_8_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_8_ingredients
+                    text: root.second_plate_8_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_9.height + second_plate_9_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_9.height
+                    MDLabel:
+                        id: second_plate_9
+                        text: root.second_plate_9
+                        color: root.color_second_plate_9
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_9_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_9_ingredients
+                    text: root.second_plate_9_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: second_plate_10.height + second_plate_10_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: second_plate_10.height
+                    MDLabel:
+                        id: second_plate_10
+                        text: root.second_plate_10
+                        color: root.color_second_plate_10
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.second_plate_10_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: second_plate_10_ingredients
+                    text: root.second_plate_10_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            MDLabel:
+
+            GridLayout:
+                rows: 1
+                size_hint_y: None
+                height: dp(20)
+                MDLabel:
+                    text: root.third_plates_name
+                    bold: True
+                    italic: True
+                    font_size: 30
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_1.height + third_plate_1_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_1.height
+                    MDLabel:
+                        id: third_plate_1
+                        text: root.third_plate_1
+                        color: root.color_third_plate_1
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_1_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_1_ingredients
+                    text: root.third_plate_1_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_2.height + third_plate_2_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_2.height
+                    MDLabel:
+                        id: third_plate_2
+                        text: root.third_plate_2
+                        color: root.color_third_plate_2
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_2_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_2_ingredients
+                    text: root.third_plate_2_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_3.height + third_plate_3_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_3.height
+                    MDLabel:
+                        id: third_plate_3
+                        text: root.third_plate_3
+                        color: root.color_third_plate_3
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_3_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_3_ingredients
+                    text: root.third_plate_3_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_4.height + third_plate_4_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_4.height
+                    MDLabel:
+                        id: third_plate_4
+                        text: root.third_plate_4
+                        color: root.color_third_plate_4
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_4_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_4_ingredients
+                    text: root.third_plate_4_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_5.height + third_plate_5_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_5.height
+                    MDLabel:
+                        id: third_plate_5
+                        text: root.third_plate_5
+                        color: root.color_third_plate_5
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_5_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_5_ingredients
+                    text: root.third_plate_5_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_6.height + third_plate_6_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_6.height
+                    MDLabel:
+                        id: third_plate_6
+                        text: root.third_plate_6
+                        color: root.color_third_plate_6
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_6_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_6_ingredients
+                    text: root.third_plate_6_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_7.height + third_plate_7_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_7.height
+                    MDLabel:
+                        id: third_plate_7
+                        text: root.third_plate_7
+                        color: root.color_third_plate_7
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_7_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_7_ingredients
+                    text: root.third_plate_7_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_8.height + third_plate_8_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_8.height
+                    MDLabel:
+                        id: third_plate_8
+                        text: root.third_plate_8
+                        color: root.color_third_plate_8
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_8_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_8_ingredients
+                    text: root.third_plate_8_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_9.height + third_plate_9_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_9.height
+                    MDLabel:
+                        id: third_plate_9
+                        text: root.third_plate_9
+                        color: root.color_third_plate_9
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_9_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_9_ingredients
+                    text: root.third_plate_9_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: third_plate_10.height + third_plate_10_ingredients.height
+                spacing: dp(3)
+                GridLayout:
+                    rows: 1
+                    size_hint_y: None
+                    height: third_plate_10.height
+                    MDLabel:
+                        id: third_plate_10
+                        text: root.third_plate_10
+                        color: root.color_third_plate_10
+                        font_size: 28
+                        bold: True
+                        italic: True
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: root.third_plate_10_price
+                        font_size: 28
+                        bold: True
+                        size_hint_y: None
+                        halign: 'right'
+                        height: self.texture_size[1]
+                MDLabel:
+                    id: third_plate_10_ingredients
+                    text: root.third_plate_10_ingredients
+                    font_size: 26
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            MDLabel:
+
+    MDSeparator:
+        id: sep_1

@@ -1,0 +1,156 @@
+<AccountPage>:
+    RecycleView:
+        GridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            row_force_true: True
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: button_favorite
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'left'
+                            app.change_screen("screen_manager_2", "favorite_page")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: filters
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'left'
+                            app.change_screen("screen_manager_2", "filter_page")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: button_language
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'left'
+                            app.change_screen("screen_manager_2", "language_page")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: suggestion
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'left'
+                            app.change_screen("screen_manager_2", "suggestion_page")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: tutorial
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            webbrowser.open("https://www.youtube.com/watch?v=BVZhiCATsug")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: website
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            webbrowser.open("https://www.youtube.com/watch?v=BVZhiCATsug")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, None
+                height: dp(70)
+                FloatLayout:
+                    MDLabel:
+                        id: button_logout
+                        pos_hint: {"center_x": 0.6, "center_y": 0.5}
+                        font_size: 30
+                        bold: True
+                    MDIconButton:
+                        pos_hint: {"right": 1, "center_y": 0.5}
+                        icon: "arrow-right"
+                        on_release:
+                            app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'left'
+                            app.change_screen("screen_manager_2", "logout_page")
+
+            MDSeparator:
+                size_hint: 1, None
+                height: dp(1)

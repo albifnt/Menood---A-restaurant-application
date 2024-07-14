@@ -1,0 +1,92 @@
+<FilterPage>:
+    FloatLayout:
+        GridLayout:
+            canvas:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .1
+            FloatLayout:
+                MDIconButton:
+                    pos_hint: {"center_y": 0.5, "left": 1}
+                    icon: "keyboard-backspace"
+                    on_release:
+                        app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'right'
+                        app.change_screen("screen_manager_2", "account_page")
+            FloatLayout:
+                MDLabel:
+                    id: filters
+                    pos_hint: {"top": 1, "right": 0.7}
+                    bold: True
+                    italic: True
+        MDSeparator:
+            pos_hint: {"top": 0.9, "left": 1}
+            size_hint: 1, .001
+        ScrollView:
+            pos_hint: {"top": 0.899, "right": 1}
+            size_hint: 1, .899
+            GridLayout:
+                cols: 1
+                padding: 30
+                spacing: 30
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '50dp'
+                row_force_true: True
+                GridLayout:
+                    cols: 4
+                    Label:
+                        id: restaurant_filter
+                        font_size: 30
+                        bold: True
+                        color: 0,0,0,1
+                    MDLabel:
+                        size_hint_x: None
+                        width: dp(20)
+                    MDSwitch:
+                        size_hint: 1, 0.5
+                        id: restaurant
+                        active : True
+                    MDLabel:
+                        size_hint_x: None
+                        width: dp(20)
+
+                GridLayout:
+                    cols: 4
+                    Label:
+                        id: pizzeria_filter
+                        font_size: 30
+                        bold: True
+                        color: 0,0,0,1
+                    MDLabel:
+                        size_hint_x: None
+                        width: dp(20)
+                    MDSwitch:
+                        size_hint: 1, 0.5
+                        id: pizzeria
+                        active : True
+                    MDLabel:
+                        size_hint_x: None
+                        width: dp(20)
+
+                GridLayout:
+                    cols: 4
+                    Label:
+                        id: sushi_filter
+                        font_size: 30
+                        bold: True
+                        color: 0,0,0,1
+                    MDLabel:
+                        size_hint_x: None
+                        width: dp(20)
+                    MDSwitch:
+                        size_hint: 1, 0.5
+                        id: sushi
+                        active : True
+                    MDLabel:
+                        size_hint_x: None
+                        width: dp(20)

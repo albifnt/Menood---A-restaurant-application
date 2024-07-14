@@ -1,0 +1,90 @@
+#:include kv/foodtastes.kv
+#:include kv/searchpage.kv
+#:include kv/placemapview.kv
+#:include kv/accountpage.kv
+#:include kv/favoritepage.kv
+#:include kv/descriptionpage.kv
+#:include kv/languagepage.kv
+#:include kv/suggestionpage.kv
+#:include kv/filterpage.kv
+#:include kv/searchdescriptionpage.kv
+#:include kv/logoutpage.kv
+
+<FirstPage>:
+    FloatLayout:
+        GridLayout:
+            canvas:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .099
+
+            BoxLayout:
+                Image:
+                    source: "appimages/Scritta.png"
+
+        MDSeparator:
+            pos_hint: {"top": 0.901, "left": 1}
+            size_hint: 1, 0.001
+
+        MDBottomNavigation:
+            id: bottom_navigation
+            panel_color: 1, 1, 1, 1
+            pos_hint: {"top": 0.9, "left": 1}
+            size_hint: 1, .9
+
+            MDBottomNavigationItem:
+                name: "food_taste"
+                icon: "food"
+                FoodTastes:
+                    id: food_tastes
+
+            MDBottomNavigationItem:
+                name: "filters"
+                icon: "search-web"
+                ScreenManager:
+                    id: screen_manager_1
+                    SearchPage:
+                        id: search_page
+                        name: "search_page"
+                    SearchDescriptionPage:
+                        id: search_description_page
+                        name: "search_description_page"
+
+            MDBottomNavigationItem:
+                name: "earth"
+                icon: "earth"
+                PlaceMapView:
+                    id: place_map_view
+
+            MDBottomNavigationItem:
+                name: "account"
+                icon: "account"
+                ScreenManager:
+                    id: screen_manager_2
+                    AccountPage:
+                        id: account_page
+                        name: "account_page"
+                    LanguagePage:
+                        id: language_page
+                        name: "language_page"
+                    FavoritePage:
+                        id: favorite_page
+                        name: "favorite_page"
+                    SuggestionPage:
+                        id: suggestion_page
+                        name: "suggestion_page"
+                    FilterPage:
+                        id: filter_page
+                        name: "filter_page"
+                    DescriptionPage:
+                        id: description_page
+                        name: "description_page"
+                    LogoutPage:
+                        id: logout_page
+                        name: "logout_page"
+

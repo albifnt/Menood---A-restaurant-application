@@ -1,0 +1,26 @@
+#:include firebaseloginscreen.kv
+#:import FirebaseLoginScreen firebaseloginscreen.FirebaseLoginScreen
+#:import utils kivy.utils
+#:include firstpage.kv
+
+ScreenManager:
+	id: root_page
+    FirebaseLoginScreen:
+	    canvas.before:
+			Rectangle:
+				size: self.size
+				pos: self.pos
+				source: 'appimages/Background.jpg'
+		id: firebase_login_screen
+		name: 'firebase_login_screen'
+        size_hint: 1,1
+        pos_hint: {"top": 1, "right": 1}
+        web_api_key: "INSERT YOUR API KEY"
+        primary_color: (.765,.765,.765,1)
+        secondary_color: (0,.635,.91,1)
+        tertiary_color: (0,0,0,1)
+
+    FirstPage:
+        id: firstpage
+        name: 'firstpage'
+

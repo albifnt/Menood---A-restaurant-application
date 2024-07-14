@@ -1,0 +1,55 @@
+<LogoutPage>:
+    FloatLayout:
+        GridLayout:
+            cols: 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint: 0.8, 0.7
+            padding: dp(20)
+            spacing: dp(20)
+            canvas.before:
+                Color:
+                    rgba: (0, 0.635, 0.910, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10, 10, 10, 10]
+
+            Image:
+                size_hint: 1, 0.5
+                source: "appimages/account_logo.png"
+
+            MDLabel:
+                id: exit_sentence
+                size_hint: 1, 0.3
+                pos_hint: {"center_x": 0.5, "center_y": 0.8}
+                halign: "center"
+                color: [1,1,1,1]
+                font_size: 30
+                bold: True
+
+            GridLayout:
+                rows: 1
+                size_hint: 1, 0.2
+                MDLabel:
+                    size_hint: 0.1, 1
+                ThemedButton:
+                    id: no
+                    font_size: 30
+                    bold: True
+                    color: 0, 0.635, 0.910, 1
+                    bg_color: 1,1,1,1
+                    on_release:
+                        app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'right'
+                        app.change_screen("screen_manager_2", "account_page")
+                MDLabel:
+                    size_hint: 0.2, 1
+                ThemedButton:
+                    id: yes
+                    font_size: 30
+                    bold: True
+                    color: 0, 0.635, 0.910, 1
+                    bg_color: 1,1,1,1
+                    on_release:
+                        app.logout()
+                MDLabel:
+                    size_hint: 0.1, 1

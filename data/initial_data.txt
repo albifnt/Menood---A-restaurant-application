@@ -1,0 +1,1 @@
+{"favorites" : {"__no_data__": "__no_data__"}, "index": 0, "intolerant": "-,-,-,-,-,-,-,-,-,-,-,-", "suggestion": "active", "user_language": "Italiano", "values": "0,0,0,0,0,0,0,0,0,0,0,0"}

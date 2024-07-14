@@ -1,0 +1,41 @@
+<FavoritePage>:
+    FloatLayout:
+        GridLayout:
+            canvas:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .1
+            FloatLayout:
+                MDIconButton:
+                    pos_hint: {"center_y": 0.5, "left": 1}
+                    icon: "keyboard-backspace"
+                    on_release:
+                        app.root.ids['firstpage'].ids['screen_manager_2'].transition.direction = 'right'
+                        app.change_screen("screen_manager_2", "account_page")
+            FloatLayout:
+                MDLabel:
+                    id: favorite_places_title
+                    pos_hint: {"top": 1, "right": 0.7}
+                    bold: True
+                    italic: True
+        MDSeparator:
+            pos_hint: {"top": 0.9, "left": 1}
+            size_hint: 1, .001
+
+        ScrollView:
+            pos_hint: {"top": 0.899, "right": 1}
+            size_hint: 1, .899
+            GridLayout:
+                # Favorite place banner
+                id: favorite_place_banner
+                cols: 1
+                spacing: 10, 10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '70dp'
+                row_default_force: True

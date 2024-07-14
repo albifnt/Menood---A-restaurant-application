@@ -3,6 +3,8 @@
   <img  style="text-align:center" src="https://github.com/albifnt/Menood---A-restaurant-application/blob/main/content_readme/Logo.png" width="400" height="400">
 </p>
 
+IMPORTANT: This code has been developed in 2020, so some packages might be deprecated and the code might be needing review.
+
 ## Problems and difficulties faced.
 <p align="justify">
 Often, when in a new city, either traveling or for work, people have difficulties choosing a place to eat. 91% of Italians encounter difficulties when deciding where to have lunch or dinner. The causes of these difficulties vary, but the main one is certainly personal indecision. To help with the decision, 73.4% of Italians use online services like Google, Tripadvisor, The Fork, or social media. However, more than half state that they need additional information beyond what these services provide. In particular, nearly all of them believe that quickly viewing complete menus with prices and dish descriptions would facilitate their choice. To view the types of dishes and prices of a place, existing services often redirect to websites, which are not always available. This constant redirection to online sites makes the search slow and comparing places particularly difficult.

@@ -1,0 +1,40 @@
+#:import MapView kivy_garden.mapview.MapView
+#:import GpsBlinker gpsblinker.GpsBlinker
+#:include kv/gpsblinker.kv
+
+<PlaceMapView>:
+    lat: 41.804
+    lon: 12.200
+    zoom: 5
+    on_zoom:
+        self.zoom = 5 if self.zoom < 5 else self.zoom
+    on_lat:
+        self.start_getting_places_in_FOV()
+    on_lon:
+        self.start_getting_places_in_FOV()
+    GpsBlinker:
+        id: blinker
+    FloatLayout:
+        MDFloatingActionButton:
+            pos_hint: {"top":1.2, "right":1.2}
+            icon: "map-search"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            md_bg_color: [1, 1, 1, 1]
+            on_press:
+                app.search_menu.open()
+
+        MDFloatingActionButton:
+            pos_hint:{"top":1.2, "right":2.4}
+            icon: "navigation"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            md_bg_color: [1, 1, 1, 1]
+            on_press:
+                root.zoom_center()
+
+
+
+
+
+

@@ -18,3 +18,6 @@ The Menood service allows users to view complete menus with prices and dish desc
 <p align="justify">
 The true innovation that Menood brings is its ability to provide personalized suggestions to its users. Through an initial questionnaire and continuous data acquisition, an intelligent algorithm can define the user’s profile and identify culinary preferences, favorite types of restaurants, potential intolerances, allergies, and much more. By utilizing this wide array of data, Menood effectively resolves the indecision that we often experience when choosing a restaurant.
 </p>
+
+## MVP
+If you want to look at the result of this Minimum Viable Product (MVP), you can download the video Menood.mpa at https://github.com/albifnt/Menood---A-restaurant-application/blob/main/content_readme/Menood.mp4
